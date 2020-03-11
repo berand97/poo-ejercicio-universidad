@@ -36,13 +36,7 @@ public class Materia {
         this.nombreMateria = nombreMateria;
     }
 
-    public void comprobarRangoNotas(Double nota) throws InsufficientNoteException{
-        if(nota <=5 && nota>=0){
-            System.out.println("Nota aceptada");
-        }else{
-            throw new InsufficientNoteException("el valor de la nota es mas elevado que el establecido por la institucion");
-        }
-    }
+
 
 
 

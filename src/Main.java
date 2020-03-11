@@ -58,22 +58,23 @@ public class Main {
                     int idEstudiante = seleccion.nextInt();
                     System.out.println("ingrese Materia a escoger");
                     for (int j = 0; j < asignatura.size(); j++) {
-                        System.out.println(asignatura.size() + " " + asignatura.get(j));
+                        System.out.println("Nombre de la Materia " + asignatura.get(j));
                     }
                     int m = seleccion.nextInt();
-                    System.out.println("Nota de la Materia" + m);
+                    System.out.println("Nota de la Materia " + m);
                     Double nota = seleccion.nextDouble();
-                    Alumno es = new Alumno(i, nombre, idEstudiante);
+                    Alumno es = new Alumno(i, nombre, idEstudiante,nota);
                     estudiante.add(es);
+                    i++;
                     try {
-
+                        es.comprobarRangoNotas(nota);
                     } catch (InsufficientNoteException ex) {
                         System.out.println("Invalid Operation Exception");
                         System.out.println(ex.getMessage());
                     /*} catch () {
                         System.out.println("Null Pointer Exception");*/
                     } finally {
-                        System.out.println("End of transaction");
+                        System.out.println("Nota agregada");
                     }
                     respuesta = "0";
                     break;
