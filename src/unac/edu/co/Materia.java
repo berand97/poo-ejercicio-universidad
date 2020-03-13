@@ -1,9 +1,6 @@
 package unac.edu.co;
 
-import unac.edu.co.Exception.InsufficientNoteException;
-
-import java.util.ArrayList;
-import java.util.List;
+import unac.edu.co.Exception.InsertDiferentTypeException;
 
 public class Materia {
     private int IdMateria;

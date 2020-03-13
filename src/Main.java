@@ -1,7 +1,9 @@
 import unac.edu.co.Alumno;
+import unac.edu.co.Exception.InsertDiferentTypeException;
 import unac.edu.co.Exception.InsufficientNoteException;
 import unac.edu.co.Materia;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,32 +56,35 @@ public class Main {
                 case "3":
                     System.out.println("Ingrese nombre");
                     String nombre = seleccion.next();
+                    System.out.println("Ingrese apellido");
+                    String apellido = seleccion.next();
                     System.out.println("ingrese identificacion");
                     int idEstudiante = seleccion.nextInt();
                     System.out.println("ingrese Materia a escoger");
                     for (int j = 0; j < asignatura.size(); j++) {
-                        System.out.println("Nombre de la Materia " + asignatura.get(j));
+                        System.out.println("Nombre de la Materia "+ j+ " " + asignatura.get(j).getNombreMateria() );
                     }
-                    int m = seleccion.nextInt();
-                    System.out.println("Nota de la Materia " + m);
+                    int j = seleccion.nextInt();
+                    System.out.println("Nota de la Materia " + asignatura.get(j).getNombreMateria());
                     Double nota = seleccion.nextDouble();
-                    Alumno es = new Alumno(i, nombre, idEstudiante,nota);
+                    Alumno es = new Alumno(i,nombre,apellido,idEstudiante,nota);
                     estudiante.add(es);
                     i++;
                     try {
+                        es.isInteger();
                         es.comprobarRangoNotas(nota);
                     } catch (InsufficientNoteException ex) {
                         System.out.println("Invalid Operation Exception");
                         System.out.println(ex.getMessage());
-                    /*} catch () {
-                        System.out.println("Null Pointer Exception");*/
+                    } catch (InsertDiferentTypeException ex) {
+                        System.out.println("Por favor, coloca una nota entre el rango de 0-5");
                     } finally {
-                        System.out.println("Nota agregada");
+                        System.out.println();
                     }
                     respuesta = "0";
                     break;
                 case "4":
-                    System.out.println("Alumnos en la clase: \n" + estudiante + listaMateria.toString());
+                    System.out.println("Datos del alumno: \n" +estudiante + estudiante.toString() );
                     respuesta = "0";
                     break;
                 case "5":
